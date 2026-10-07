@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">草地 · 辨认落脚处 · 艺术演绎</title>
+  <desc id="desc">远山前铺着草墩与水洼，草叶和涟漪以木刻刀痕呈现。原创木刻，不表示真实地形。</desc>
+  <defs>
+    <pattern id="cuts" width="13" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(24)">
+      <path d="M2 0v11m7 2v5" stroke="#F3E9D2" stroke-width="1.4" opacity=".32"/>
+    </pattern>
+    <pattern id="paper" width="37" height="29" patternUnits="userSpaceOnUse">
+      <path d="M3 7h4m18 14h3M10 25h2" stroke="#C9A66B" opacity=".3"/>
+    </pattern>
+  </defs>
+  <path fill="#F3E9D2" d="M0 0h800v480H0z"/>
+  <path fill="url(#paper)" d="M0 0h800v480H0z"/>
+  <g fill="none" stroke="#C9A66B" stroke-width="1.2" opacity=".7">
+    <path d="M20 85Q130 15 258 62T495 40T780 66M12 102Q130 33 258 80T495 58T790 84M10 121Q130 52 258 99T495 77T788 104M16 142Q130 73 258 120T495 98T782 124"/>
+  </g>
+  <circle cx="628" cy="76" r="34" fill="#B3261E"/>
+  <path d="M18 214 106 139 183 193 279 110 349 184 432 143 520 204 595 132 681 175 782 144V278H18Z" fill="#B3261E"/>
+  <path d="M18 214 106 139 183 193 279 110 349 184 432 143 520 204 595 132 681 175 782 144V278H18Z" fill="url(#cuts)"/>
+  <g fill="#F3E9D2"><path d="m279 110-38 49 37-15 33 13Zm316 22-32 36 30-12 31 19Zm-163 11-21 30 23-10 34 18Z"/></g>
+  <path d="M18 238q140-41 245-8t244 3 275-9v217H18Z" fill="#C9A66B"/>
+  <path d="M99 270q75-24 161-8t63 31-92 21-69 16 159 20 167-12 177-8 61 33-106 17-48 20 160 20 50 21H37l52-29 100-20-24-12-94-14-12-25 102-24 7-13-96-7Z" fill="#5B6B73"/>
+  <g fill="none" stroke="#F3E9D2" stroke-width="3"><path d="M107 283q76-13 141-4m-143 14q63-7 125-3m108 56q72 5 119-4m-232 19q102 8 187-2m113-2 90-2M91 409q68-28 135-26m23 30 140 3m85-7q88-11 150 9m-481 13 115-6"/></g>
+  <g fill="#B3261E"><path d="M41 338q19-35 55-14t38 36l-23 8-46-6ZM293 324q25-34 52-28t49 33l-29 14-50-4ZM577 294q12-27 49-25t67 33l-27 15-63-3ZM444 402q22-39 64-36t62 39l-34 17-66-3Z"/></g>
+  <g fill="none" stroke="#B3261E" stroke-width="3"><path d="m58 335-9-26m24 24-1-35m14 36 10-23m223 4-11-24m23 21 2-33m12 34 13-23m246-1-8-29m24 27 4-34m13 34 14-22m-196 110-8-29m24 24 2-35m14 40 10-27"/></g>
+  <g fill="none" stroke="#F3E9D2" stroke-width="2"><path d="m67 346 43 6m216-29 32 6m251-33 48 8m-182 103 48 7"/></g>
+  <path d="M18 432q45-25 98-8t90 17H18ZM782 408q-45-23-77-9t-43 42h120Z" fill="#1F1A17"/>
+  <g stroke="#1F1A17" stroke-width="3"><path d="m34 430-8-28m20 23 5-40m18 44 14-25m631 12-7-30m22 27 6-38m16 40 17-20"/></g>
+  <path d="M18 450H782" stroke="#B3261E" stroke-width="2"/>
+  <g fill="none" stroke="#B3261E" stroke-width="1" opacity=".65"><path d="M18 18h32m-32 0v28M782 18h-32m32 0v28M18 430v20m764-20v20"/></g>
+</svg>

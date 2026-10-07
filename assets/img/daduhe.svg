@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">大渡河 · 峡谷激流 · 艺术演绎</title>
+  <desc id="desc">两岸峭壁夹着弯曲激流，岩面留有刻刀纹，近岸只有虚构侦察兵背影。原创木刻，不表示真实地形。</desc>
+  <defs>
+    <pattern id="cuts" width="13" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(24)">
+      <path d="M2 0v11m7 2v5" stroke="#F3E9D2" stroke-width="1.4" opacity=".32"/>
+    </pattern>
+    <pattern id="paper" width="37" height="29" patternUnits="userSpaceOnUse">
+      <path d="M3 7h4m18 14h3M10 25h2" stroke="#C9A66B" opacity=".3"/>
+    </pattern>
+  </defs>
+  <path fill="#F3E9D2" d="M0 0h800v480H0z"/>
+  <path fill="url(#paper)" d="M0 0h800v480H0z"/>
+  <g fill="none" stroke="#C9A66B" stroke-width="1.2" opacity=".7">
+    <path d="M20 85Q130 15 258 62T495 40T780 66M12 102Q130 33 258 80T495 58T790 84M10 121Q130 52 258 99T495 77T788 104M16 142Q130 73 258 120T495 98T782 124"/>
+  </g>
+  <circle cx="566" cy="72" r="35" fill="#B3261E"/>
+  <path d="M58 219 161 93 246 206 326 164 409 249 505 154 597 202 695 123 788 233V331H18Z" fill="#C9A66B"/>
+  <path d="M18 104 86 66 151 148 221 125 305 254 351 299 323 397 18 438Z" fill="#B3261E"/>
+  <path d="M782 92 724 71 663 135 605 129 548 250 453 304 488 394 782 429Z" fill="#B3261E"/>
+  <path d="M18 104 86 66 151 148 221 125 305 254 351 299 323 397 18 438ZM782 92 724 71 663 135 605 129 548 250 453 304 488 394 782 429Z" fill="url(#cuts)"/>
+  <g fill="#F3E9D2"><path d="m89 97 30 97 65 50-61-22-50-77Zm131 61 36 102 49 49-52-27-34-58Zm-163 79 37 42 28 86-46-61Zm667-135-45 124-46 44 29-80Zm-100 58-39 110-54 51 31-70Zm106 82-26 79-54 49 23-54Z"/></g>
+  <path d="M368 243q65 18 57 56t-43 54q-18 20 71 46l159 42H182l124-52q101-31 39-56t23-90Z" fill="#5B6B73"/>
+  <g fill="none" stroke="#F3E9D2" stroke-linecap="square"><path d="m376 267 28 8m-41 22 39 5m-54 23 30 11m-32 11-22 11m48-6-36 15m28 4-35 11m76-2 44 15m-100-4-61 21m128-5 66 17m-132-4-98 23" stroke-width="4"/><path d="m386 257 13 4m-45 43 20 11m-50 65-43 11m143 9 74 17m-129-15-73 21" stroke-width="2"/></g>
+  <path d="M18 391 105 352 180 373 240 423 317 441H18ZM782 378 698 345 603 392 548 442H782Z" fill="#1F1A17"/>
+  <g fill="#F3E9D2"><path d="m32 411 63-23-33 28 94-24-50 30Zm693-34-38 24 61-8-21 17 41-5Z"/></g>
+  <!-- 普通虚构侦察兵背影，无面部、旗帜或武器。 -->
+  <g fill="#1F1A17"><path d="M188 324q-2-12 11-12t11 12l-3 10h-16Z"/><path d="m190 337-13 15-3 29 12 3 4-20-3 44h10l3-34 6 34h11l-7-57-10-14Zm21 8 13 22-7 5-12-18Z"/></g>
+  <path d="M18 450H782" stroke="#B3261E" stroke-width="2"/>
+  <g fill="none" stroke="#B3261E" stroke-width="1" opacity=".65"><path d="M18 18h32m-32 0v28M782 18h-32m32 0v28M18 430v20m764-20v20"/></g>
+</svg>

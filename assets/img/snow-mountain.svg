@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">夹金山 · 风雪行进 · 艺术演绎</title>
+  <desc id="desc">朱红雪峰、米白雪线与刻刀纹构成山体，近处是虚构侦察兵背影。原创木刻，不表示真实地形。</desc>
+  <defs>
+    <pattern id="cuts" width="13" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(24)">
+      <path d="M2 0v11m7 2v5" stroke="#F3E9D2" stroke-width="1.4" opacity=".32"/>
+    </pattern>
+    <pattern id="paper" width="37" height="29" patternUnits="userSpaceOnUse">
+      <path d="M3 7h4m18 14h3M10 25h2" stroke="#C9A66B" opacity=".3"/>
+    </pattern>
+  </defs>
+  <path fill="#F3E9D2" d="M0 0h800v480H0z"/>
+  <path fill="url(#paper)" d="M0 0h800v480H0z"/>
+  <g fill="none" stroke="#C9A66B" stroke-width="1.2" opacity=".7">
+    <path d="M20 85Q130 15 258 62T495 40T780 66M12 102Q130 33 258 80T495 58T790 84M10 121Q130 52 258 99T495 77T788 104M16 142Q130 73 258 120T495 98T782 124"/>
+  </g>
+  <circle cx="651" cy="83" r="38" fill="#B3261E"/>
+  <path d="M18 348 144 167 227 242 353 77 470 219 582 121 782 354Z" fill="#C9A66B"/>
+  <path d="M18 412 147 248 214 303 397 69 550 302 627 208 782 415Z" fill="#B3261E"/>
+  <path d="M18 412 147 248 214 303 397 69 550 302 627 208 782 415Z" fill="url(#cuts)"/>
+  <path d="m397 69-103 132 52-19 34 25 23-46 52 19ZM147 248l-43 57 43-19 28 19 39-2Zm480-40-43 53 46-22 45 28Z" fill="#F3E9D2"/>
+  <g fill="#F3E9D2"><path d="m403 161 37 116 55 52-69-30-27-67-37 108-64 34 52-67Zm-46 47-49 95-67 70 30-67Zm271 48-13 87-39 53 18-77Zm-483 40-16 69-41 42 25-58Zm282 54-30 61-50 16 45-38Z"/></g>
+  <path d="M18 416q104-30 210-9t208-4 163-10 183 14v34H18Z" fill="#1F1A17"/>
+  <g fill="none" stroke="#F3E9D2" stroke-width="2"><path d="m35 426 87-14m-45 23 117-18m308 11 70-14m31 9 77-14m-57 25 128-13"/></g>
+  <g fill="none" stroke="#F3E9D2" stroke-width="3" opacity=".85"><path d="m243 133 58-12m-83 39 50-7m246 60 59-15m-56 39 31-7"/></g>
+  <!-- 虚构普通侦察兵的背影。手持行走杖，无武器细节。 -->
+  <g fill="#1F1A17"><path d="M255 334q-3-14 12-16l16 3 4 15-8 12h-19Z"/><path d="m260 351-14 14-8 42 12 5 9-29-6 49h14l5-44 9 44h14l-9-68-13-13Zm26 14 24 26-6 10-21-20Zm-41-5-15 5-5 24 16 4Z"/></g>
+  <path d="m314 388-5 45" stroke="#1F1A17" stroke-width="4"/>
+  <path d="M18 450H782" stroke="#B3261E" stroke-width="2"/>
+  <g fill="none" stroke="#B3261E" stroke-width="1" opacity=".65"><path d="M18 18h32m-32 0v28M782 18h-32m32 0v28M18 430v20m764-20v20"/></g>
+</svg>
