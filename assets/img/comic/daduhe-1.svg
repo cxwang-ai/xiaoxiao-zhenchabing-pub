@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-labelledby="title desc">
+<title id="title">安顺场 · 雨夜抵达 · 木刻艺术演绎</title>
+<desc id="desc">暗夜斜雨中，一小队背影沿河岸山道前行；激流对岸远处可见安顺场老街低矮屋顶。 原创示意构图，不表示实测地形；人物均为虚构无面部剪影。</desc>
+<defs><pattern id="grain" width="41" height="31" patternUnits="userSpaceOnUse"><path d="m3 8 7-1m16 13 4-1m-17 8 3-1" stroke="#C9A66B" stroke-width=".8" opacity=".3"/></pattern>
+<pattern id="cuts" width="18" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(23)"><path d="M3 0v12m8 5v5" stroke="#F3E9D2" stroke-width="1" opacity=".24"/></pattern><g id="walker" fill="#1F1A17">
+<path d="M-6-47q-2-9 6-10l8 2 1 7-4 5h-9Z M-7-41l11-2 9 17-6 5-6-11-3 17 12 14-5 4-16-14-7 14-6-3 9-23-2-10-8 10-5-3 10-15Z"/>
+<path d="M-11-38l-8 2-3 15 10 2Z"/>
+<path d="m-15-31 1 8m14-12 5 7" fill="none" stroke="#F3E9D2" stroke-width="1.3"/>
+</g></defs>
+<path d="M0 0h480v270H0Z" fill="#1F1A17" /><path d="M0 121 65 57 110 101 163 58 228 132 306 76 364 112 433 62 480 91V203H0Z" fill="#5B6B73" /><path d="M0 94 38 62 75 116 104 108 149 166 125 216H0Z" fill="#B3261E" /><path d="M0 94 38 62 75 116 104 108 149 166 125 216H0Z" fill="url(#cuts)" /><path d="M167 144q77-27 150-3t163 9v120H69l46-39 83-31 35-20Z" fill="#5B6B73" /><path d="M230 151q59-10 103 3m17 3 89 3M270 178l99 11m-125 16 114 10m-160 7 107 12m40-16 111 11m-82 13 62 9" fill="none" stroke="#F3E9D2" stroke-width="3"/><path d="M296 125l23-20 29 19 20-14 25 13 26-20 39 28-8 6v29H299Z" fill="#1F1A17" /><path d="m304 124 15-11 22 12m36-4 15 10m26-13 30 17M310 146h24m40 2h17m29-2h19" fill="none" stroke="#C9A66B" stroke-width="1.5"/><path d="M0 187q75-10 136 3t114-12l31-12 12 8-28 26q-61 27-127 15T0 232Z" fill="#C9A66B" /><path d="M0 234q68-39 120-12t127 11l-36 37H0Z" fill="#1F1A17" /><path d="m17 247 47-15m19 12 46 9m28-1 33-6m-48-48 41-2m27-9 24-9" fill="none" stroke="#F3E9D2" stroke-width="2"/><use href="#walker" transform="translate(78 220) scale(0.94)"/><use href="#walker" transform="translate(126 220) scale(0.8)"/><use href="#walker" transform="translate(168 216) scale(0.7)"/><use href="#walker" transform="translate(208 205) scale(0.6)"/><use href="#walker" transform="translate(242 191) scale(0.5)"/><path d="m23 25-13 23m43-36-17 31m45-23-12 24m47-21-15 28m46-27-14 27m53-26-15 29m57-16-16 28m50-32-13 25m48-18-14 27m50-31-17 31m-401 30-14 25m44-8-14 25m62-26-16 29m48-21-15 27m53-26-12 24m45-10-13 25m51-20-16 29m47-26-12 22m42-1-15 26m-340 1-13 22m49-14-11 22m43-18-13 23m56-21-11 20m48-8-12 23m54-19-12 23m55-25-13 23" fill="none" stroke="#F3E9D2" stroke-width="1.2" opacity=".65"/>
+<path d="M8 24V8h22m420 0h22v16M8 246v16h22m420 0h22v-16" fill="none" stroke="#C9A66B" stroke-width="1"/>
+<path d="M0 0h480v270H0Z" fill="url(#grain)"/>
+</svg>

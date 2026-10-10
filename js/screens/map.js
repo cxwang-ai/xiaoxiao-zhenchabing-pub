@@ -4,8 +4,8 @@
   var ui = XZ.ui;
   XZ.router.register('map', function (app) {
     if (!XZ.state.get().started) { XZ.router.go('start'); return; }
-    var state = XZ.state.get();
-    ui.heading(app, '路线总图 / 艺术演绎', '沿途的自然天险', '按大渡河 → 夹金山 → 草地依次解锁，三关共享体力与物资。');
+    var state = XZ.state.get(), stopCredits = null;
+    ui.heading(app, '路线总图 / 艺术演绎', '沿途的自然天险', '大渡河、夹金山、草地均可自由选择，无需依次解锁；三关共享体力与物资。');
     var layout = ui.el('div', 'map-layout');
     var mapSection = ui.el('section', 'map-section');
     var mapData = XZ.data.map;
@@ -16,39 +16,31 @@
       return level.position.x.status === 'verified' && level.position.y.status === 'verified' ? 'verified' : 'pending';
     }
     function progressLabel(level) {
-      return !XZ.state.isUnlocked(level.id) ? '待解锁' : state.progress[level.id].completed ? '已过' : '进入';
+      return !XZ.state.isUnlocked(level.id) ? '未开放' : state.progress[level.id].completed ? '已过' : '待挑战';
     }
     function progressClass(level) {
       return !XZ.state.isUnlocked(level.id) ? 'is-locked' : state.progress[level.id].completed ? 'is-complete' : 'is-available';
     }
-    function enterLevel(level, viewer) {
-      if (!XZ.state.isUnlocked(level.id)) { return; }
-      if (viewer) { viewer.close(); }
-      XZ.router.go('level', { id: level.id });
-    }
-    function createLegend(viewer) {
-      var legend = ui.el('nav', 'map-legend');
+    function createLegend() {
+      var legend = ui.el('div', 'map-legend');
       legend.setAttribute('aria-label', '关卡图例');
       XZ.data.levels.forEach(function (level, index) {
-        var entry = ui.button('①②③'.charAt(index) + ' ' + level.name + ' · ' + progressLabel(level), function () {
-          enterLevel(level, viewer);
-        }, { secondary: true, disabled: !XZ.state.isUnlocked(level.id), className: 'map-legend-entry ' + progressClass(level) });
-        legend.appendChild(entry);
+        legend.appendChild(ui.el('span', 'map-legend-entry ' + progressClass(level),
+          '①②③'.charAt(index) + ' ' + level.name + ' · ' + progressLabel(level)));
       });
       return legend;
     }
-    function addPoints(surface, viewer) {
+    function addPoints(surface) {
       XZ.data.levels.forEach(function (level, index) {
         var x = level.position.x.value, y = level.position.y.value;
-        // 按整图比例计算最近点的轴向间距；触控正方形至多占间距的八成，互不遮挡。
+        // 按整图比例计算最近点的轴向间距；标记至多占间距的八成，互不遮挡。
         var spacing = XZ.data.levels.reduce(function (nearest, other) {
           if (other === level) { return nearest; }
           return Math.min(nearest, Math.max(Math.abs(x - other.position.x.value),
             Math.abs(y - other.position.y.value) * mapData.height / mapData.width));
         }, 100) * 0.8;
-        var point = ui.button('', function () { enterLevel(level, viewer); }, { className: 'map-point ' + progressClass(level) });
-        // 锁定点也能用键盘聚焦、读取名称与状态；点击由 enterLevel 的解锁检查拦截。
-        point.setAttribute('aria-disabled', String(!XZ.state.isUnlocked(level.id)));
+        var point = ui.el('span', 'map-point ' + progressClass(level));
+        point.setAttribute('role', 'img');
         point.setAttribute('aria-label', level.name + ' · ' + progressLabel(level));
         point.title = level.name + ' · ' + progressLabel(level) + '；坐标' + (positionStatus(level) === 'verified' ? '已核实' : '待核实');
         point.style.left = x + '%'; point.style.top = y + '%';
@@ -72,7 +64,7 @@
           'position: { x: param(' + x + ", '%', '" + label + "', 'pending'), y: param(" + y + ", '%', '" + label + "', 'pending') }");
       });
     }
-    function createMap(enlarged, viewer) {
+    function createMap(enlarged) {
       var surface = ui.el('div', 'map-placeholder' + (enlarged ? ' map-original' : ''));
       surface.style.aspectRatio = mapData.width + ' / ' + mapData.height;
       surface.setAttribute('aria-label', '标准地图底图，关卡点由作者对照标准地图标注');
@@ -96,7 +88,7 @@
         };
         image.src = mapData.image; surface.appendChild(image); enablePicker(surface, image);
       }
-      addPoints(surface, viewer); return surface;
+      addPoints(surface); return surface;
     }
     function openViewer() {
       var previousFocus = document.activeElement;
@@ -119,9 +111,9 @@
       if (picking) { viewer.appendChild(ui.el('p', 'map-pick-note', '坐标拾取已启用：点击地图，复制弹出的坐标片段。')); }
       var scroll = ui.el('div', 'map-viewer-scroll'); scroll.tabIndex = 0;
       scroll.setAttribute('role', 'region'); scroll.setAttribute('aria-label', '地图滚动区域');
-      var original = createMap(true, viewer);
+      var original = createMap(true);
       scroll.appendChild(original); viewer.appendChild(scroll);
-      viewer.appendChild(createLegend(viewer));
+      viewer.appendChild(createLegend());
       viewer.appendChild(ui.el('p', 'map-viewer-help', '审图号：' + mapData.reviewNumber.value + ' · ' + mapData.source.value));
       function sizeAndCenter() {
         var width = tier === 2 ? mapData.width : scroll.clientWidth * (tier === 1 ? 2 : 1);
@@ -156,12 +148,12 @@
     mapSection.appendChild(createLegend());
     var mapActions = ui.el('div', 'actions'); mapActions.appendChild(zoom); mapSection.appendChild(mapActions);
     if (picking) { mapSection.appendChild(ui.el('p', 'map-pick-note', '坐标拾取已启用：点击地图，复制弹出的坐标片段。')); }
+    // 作者要求精简显示并保留一处审图号；完整信息保留在 XZ.data.map 与规则文档中。
     var metadata = ui.el('div', 'map-metadata');
+    metadata.appendChild(ui.el('p', 'map-metadata-title', '底图来源'));
+    metadata.appendChild(ui.el('p', '', mapData.source.value + '，出处：' + mapData.source.source + '，关卡点由作者对照标准地图标注'));
     metadata.appendChild(ui.el('p', '', '审图号：' + (mapData.reviewNumber.value || '待填写')));
-    metadata.appendChild(ui.datum(mapData.reviewNumber)); metadata.appendChild(ui.datum(mapData.source));
-    if (mapData.source.downloaded) { metadata.appendChild(ui.el('p', 'source', '底图下载日期：' + mapData.source.downloaded)); }
     mapSection.appendChild(metadata);
-    mapSection.appendChild(ui.el('p', 'map-caption', '关卡点由作者对照标准地图标注'));
     layout.appendChild(mapSection);
     var list = ui.el('div', 'level-list');
     XZ.data.levels.forEach(function (level, index) {
@@ -171,15 +163,20 @@
       var verification = ui.el('p', 'map-coordinate-status', '关卡点坐标：');
       verification.dataset.status = positionStatus(level); content.appendChild(verification);
       if (!XZ.state.isUnlocked(level.id)) {
-        content.appendChild(ui.el('span', 'locked-label', '锁定 · 完成前一关后解锁'));
+        content.appendChild(ui.el('span', 'locked-label', '本关暂未开放'));
       } else if (state.progress[level.id].completed) {
         content.appendChild(ui.el('span', 'passed-seal', '已过'));
         content.appendChild(ui.stars(state.progress[level.id].stars));
+        content.appendChild(ui.button('重看本关字幕', function () {
+          stopCredits = ui.credits.open(level.id, { onDone: function () { stopCredits = null; } });
+        }, { secondary: true }));
         content.appendChild(ui.badge('param'));
-        content.appendChild(ui.button('查看史料卡', function () { XZ.router.go('level', { id: level.id }); }, { secondary: true }));
+        var historyButton = ui.button('查看史料卡', function () { XZ.router.go('level', { id: level.id }); }, { secondary: true });
+        historyButton.setAttribute('aria-label', level.name + ' · 查看史料卡'); content.appendChild(historyButton);
       } else {
-        content.appendChild(ui.el('p', '', '探索自然规律，再用同一模型检验行进方案。'));
-        content.appendChild(ui.button(state.active && state.active.id === level.id ? '继续本关侦察 →' : '进入关卡 →', function () { XZ.router.go('level', { id: level.id }); }));
+        content.appendChild(ui.el('p', '', '读一张侦察简报，再带队伍闯过自然天险。'));
+        var enterButton = ui.button(state.active && state.active.id === level.id ? '继续本关侦察 →' : '进入关卡 →', function () { XZ.router.go('level', { id: level.id }); });
+        enterButton.setAttribute('aria-label', level.name + ' · 进入'); content.appendChild(enterButton);
       }
       var card = ui.card((index + 1) + ' · ' + level.name, content);
       // 关卡坐标的标签单独保留在对应说明旁，避免被卡片通用去重移走。
@@ -192,5 +189,6 @@
     }
     actions.appendChild(ui.button('返回开始页', function () { XZ.router.go('start'); }, { secondary: true }));
     app.appendChild(actions);
+    return function () { if (stopCredits) { stopCredits(); } };
   });
 }());

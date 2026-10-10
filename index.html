@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <section id="load-hint" aria-label="页面加载提示" style="box-sizing: border-box; max-width: 720px; margin: 16px auto; padding: 16px; border: 2px solid #B3261E; background: #F3E9D2; color: #1F1A17; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px; line-height: 1.7; overflow-wrap: anywhere;">
+  <section id="load-hint" aria-label="页面加载提示" style="box-sizing: border-box; max-width: 720px; margin: 16px auto; padding: 16px; border: 2px solid #B3261E; background: #F3E9D2; color: #1F1A17; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: var(--fs-md); line-height: var(--lh-body); overflow-wrap: anywhere;">
     <p style="margin: 0 0 12px; font-weight: bold;">如果你看到这段文字，说明浏览器没能读取同一文件夹中的样式和程序文件。</p>
     <ol style="margin: 0; padding-left: 24px;">
       <li>确认解压后的整个文件夹完整：不要只拷贝 index.html，也不要在压缩包预览中直接打开。</li>
@@ -29,17 +29,37 @@
   <noscript>请开启浏览器的 JavaScript，以操作滑块和游玩关卡。</noscript>
   <!-- 普通脚本按依赖顺序加载，双击本文件即可离线运行。 -->
   <script src="js/data/levels.js"></script>
+  <script src="js/data/quiz.js"></script>
+  <script src="js/data/credits.js"></script>
+  <script src="js/engine/rng.js"></script>
+  <script src="js/engine/loop.js"></script>
+  <script src="js/engine/input.js"></script>
+  <script src="js/engine/view.js"></script>
+  <script src="js/engine/physics.js"></script>
+  <script src="js/engine/hud.js"></script>
+  <script src="js/core/challenge.js"></script>
   <script src="js/core/rules.js"></script>
+  <script src="js/core/quiz.js"></script>
   <script src="js/core/state.js"></script>
   <script src="js/core/router.js"></script>
   <script src="js/ui/components.js"></script>
   <script src="js/ui/charts.js"></script>
-  <script src="js/ui/gameplay.js"></script>
+  <script src="js/ui/briefing.js"></script>
+  <script src="js/ui/comic.js"></script>
+  <script src="js/ui/quiz.js"></script>
+  <script src="js/ui/credits.js"></script>
+  <script src="js/levels/caodi.js"></script>
+  <script src="js/games/caodi-game.js"></script>
+  <script src="js/games/caodi-render.js"></script>
+  <script src="js/games/jiajinshan-game.js"></script>
+  <script src="js/games/jiajinshan-render.js"></script>
+  <script src="js/games/daduhe-game.js"></script>
+  <script src="js/games/daduhe-render.js"></script>
+  <script src="js/screens/arcade.js"></script>
   <script src="js/screens/start.js"></script>
   <script src="js/screens/map.js"></script>
   <script src="js/levels/daduhe.js"></script>
   <script src="js/levels/jiajinshan.js"></script>
-  <script src="js/levels/caodi.js"></script>
   <script src="js/levels/daduhe-ui.js"></script>
   <script src="js/levels/jiajinshan-ui.js"></script>
   <script src="js/levels/caodi-ui.js"></script>

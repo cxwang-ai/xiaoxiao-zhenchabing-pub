@@ -3,15 +3,43 @@
   var XZ = window.XZ;
   var labels = { pending: '待核实', model: '简化模型', param: '游戏参数', verified: '已核实' };
 
+  function formatText(value) { return String(value).replace(/°\s*C/g, '℃'); }
   // 统一用 textContent 写文字，数据文件填写内容时不会被当作 HTML 执行。
   function el(tag, className, text) {
     var node = document.createElement(tag);
     if (className) { node.className = className; }
-    if (text !== undefined && text !== null) { node.textContent = text; }
+    if (text !== undefined && text !== null) { node.textContent = formatText(text); }
     return node;
   }
   function badge(status) { return el('span', 'badge badge-' + (labels[status] ? status : 'pending'), labels[status] || labels.pending); }
-  function source(data) { return el('p', 'source', '出处：' + (data.source || (data.status === 'param' ? '本游戏设计，非实测资料' : '待补充'))); }
+  function source(data) {
+    var node = el('p', 'source');
+    var text = formatText(data.source || (data.status === 'param' ? '本游戏设计，非实测资料' : '待补充'));
+    node.appendChild(document.createTextNode('出处：'));
+    var regex = /https?:\/\/[^\s；，。]+/g, match, offset = 0;
+    while ((match = regex.exec(text))) {
+      node.appendChild(document.createTextNode(text.slice(offset, match.index)));
+      var link = el('a', '', match[0]); link.href = match[0]; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      node.appendChild(link); offset = regex.lastIndex;
+    }
+    node.appendChild(document.createTextNode(text.slice(offset))); return node;
+  }
+  // 原生 modal 提供焦点限制；dispose 静默清理，只有实际关闭触发 onClose。
+  function modal(dialog, onClose) {
+    var previousFocus = document.activeElement, previousOverflow = document.body.style.overflow, disposed = false;
+    function cleanup() {
+      if (disposed) { return; } disposed = true;
+      dialog.removeEventListener('close', closed);
+      if (dialog.open) { dialog.close(); }
+      if (dialog.parentNode) { dialog.parentNode.removeChild(dialog); }
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus && previousFocus.isConnected) { previousFocus.focus({ preventScroll: true }); }
+    }
+    function closed() { cleanup(); if (onClose) { onClose(); } }
+    dialog.addEventListener('close', closed);
+    document.body.appendChild(dialog); document.body.style.overflow = 'hidden'; dialog.showModal();
+    return cleanup;
+  }
   function datum(data, options) {
     options = options || {};
     var row = el('div', 'datum'); row.dataset.status = data.status; row.title = labels[data.status] || labels.pending;
@@ -108,5 +136,5 @@
     return image;
   }
 
-  XZ.ui = { el: el, badge: badge, datum: datum, source: source, button: button, card: card, heading: heading, stars: stars, resources: resources, history: history, details: details, illustration: illustration };
+  XZ.ui = { el: el, badge: badge, datum: datum, source: source, modal: modal, button: button, card: card, heading: heading, stars: stars, resources: resources, history: history, details: details, illustration: illustration };
 }());
