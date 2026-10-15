@@ -554,3 +554,13 @@ code, kbd, pre, samp { font-family: var(--sans); }
   .arcade[data-layout="full"] .arcade-screen, .arcade[data-layout="full"] .arcade-controls { margin-inline: auto; }
 }
 .grassland .key-secondary { grid-column: 1; grid-row: 1; }
+
+/* 首页通行验证：延续纸张、朱红与手记边框。 */
+.access-gate { margin-top: 24px; padding: 18px; border: 1px solid var(--line); border-top: 3px solid var(--red); }
+.access-label { display: block; font-family: var(--serif); font-size: var(--fs-lg); font-weight: 800; margin-bottom: 8px; }
+.access-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.access-input { flex: 1 1 150px; min-width: 0; width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid var(--slate); border-radius: 2px; background: #fff9ed; color: var(--ink); font-size: var(--fs-md); }
+.access-input[aria-invalid="true"] { border: 2px solid var(--red); }
+.access-row .button { flex: 1 1 150px; min-height: 48px; }
+.access-error { min-height: 1.6em; margin-top: 8px; color: var(--red); font-size: var(--fs-sm); }
+.access-success { margin-top: 20px; color: var(--slate); }
