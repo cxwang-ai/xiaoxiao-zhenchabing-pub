@@ -4,9 +4,11 @@
   var screens = {};
   var cleanup = null;
   // Static entry code: an on-device gate, not server-side authentication.
-  // Keep access in memory so reloading requires verification again.
-  var authorized = false;
+  // Temporarily open to everyone; set this flag to true to restore the code gate.
+  var accessCodeRequired = false;
+  var authorized = !accessCodeRequired;
   XZ.router = {
+    isAccessCodeRequired: function () { return accessCodeRequired; },
     isAuthorized: function () { return authorized; },
     verifyAccess: function (code) {
       if (code !== '1015') { return false; }

@@ -48,7 +48,9 @@
     if (!XZ.router.isAuthorized()) {
       copy.appendChild(accessForm());
     } else {
-      copy.appendChild(ui.el('p', 'access-success', '验证通过，可以开始侦察。'));
+      if (XZ.router.isAccessCodeRequired()) {
+        copy.appendChild(ui.el('p', 'access-success', '验证通过，可以开始侦察。'));
+      }
       var difficulty = XZ.state.get().difficulty;
       var selection = ui.el('fieldset', 'difficulty-select'); selection.appendChild(ui.el('legend', '', '选择难度 · 游戏参数'));
       [['easy', '轻松', '第一次玩推荐轻松 · 可按住划桨'], ['standard', '标准', '速度较快、消耗较多']].forEach(function (item) {
